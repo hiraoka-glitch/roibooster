@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お申し込み完了 | ROIブースター</title>
+    <meta name="description" content="ROIブースターの無料相談にお申し込みいただき、ありがとうございます。">
+    
+    <!-- TODO: GA4測定IDを設定 -->
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script> -->
+    
+    <!-- TODO: Meta Pixel IDを設定 -->
+    <!-- Meta Pixel Code -->
+    <!-- <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript> -->
+    
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="thanks-container">
+        <div class="container">
+            <div class="thanks-content">
+                <div class="thanks-icon">✅</div>
+                <h1 class="thanks-title">お申し込み完了</h1>
+                <p class="thanks-message">
+                    無料相談のお申し込みを受け付けました。<br>
+                    ありがとうございます。
+                </p>
+                
+                <div class="thanks-details">
+                    <h2>次のステップ</h2>
+                    <ol>
+                        <li>24時間以内に担当者よりご連絡いたします</li>
+                        <li>現在の広告運用状況についてヒアリング</li>
+                        <li>ROI改善の道筋をご提案</li>
+                    </ol>
+                </div>
+                
+                <div class="thanks-cta">
+                    <p>5秒後にトップページに戻ります</p>
+                    <a href="index.html" class="btn btn-primary">今すぐ戻る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // TODO: GA4測定IDを設定
+        // gtag('event', 'generate_lead', {
+        //     'event_category': 'engagement',
+        //     'event_label': 'free_consultation'
+        // });
+        
+        // TODO: Meta Pixel IDを設定
+        // fbq('track', 'Lead', {
+        //     content_name: 'free_consultation',
+        //     content_category: 'engagement'
+        // });
+        
+        // 5秒後にトップページに戻る
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 5000);
+    </script>
+</body>
+</html>
