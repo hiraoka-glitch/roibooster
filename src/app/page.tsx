@@ -1,11 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import spec from "./lp.spec.json"
+import { LPSpecSchema, type Section } from "@/lib/schemas"
 
-type Section =
-  | { type: "attention"; heading: string; sub?: string }
-  | { type: "problem"; bullets: string[] }
-  | { type: "solution"; points: string[] }
+// Validate the spec at build time
+const validatedSpec = LPSpecSchema.parse(spec)
 
 export default function Home() {
   return (
@@ -13,7 +12,7 @@ export default function Home() {
       <div className="max-w-3xl w-full space-y-8">
         <Card>
           <CardHeader>
-            <CardTitle>{spec.title}</CardTitle>
+            <CardTitle>{validatedSpec.title}</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">このLPは JSON スペックのみをソースとして描画されています。</p>
@@ -26,52 +25,52 @@ export default function Home() {
           </CardContent>
         </Card>
 
-        {spec.sections.map((s: Section, idx: number) => {
-          if (s.type === "attention") {
-            return (
-              <Card key={idx}>
-                <CardHeader>
-                  <CardTitle>{s.heading}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {s.sub && <p className="text-muted-foreground">{s.sub}</p>}
-                </CardContent>
-              </Card>
-            )
+        {validatedSpec.sections.map((s: Section, idx: number) => {
+          switch (s.type) {
+            case "attention":
+              return (
+                <Card key={idx}>
+                  <CardHeader>
+                    <CardTitle>{s.heading}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {s.sub && <p className="text-muted-foreground">{s.sub}</p>}
+                  </CardContent>
+                </Card>
+              )
+            case "problem":
+              return (
+                <Card key={idx}>
+                  <CardHeader>
+                    <CardTitle>Problem</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="list-disc pl-6 space-y-1">
+                      {s.bullets.map((b, i) => (
+                        <li key={i}>{b}</li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )
+            case "solution":
+              return (
+                <Card key={idx}>
+                  <CardHeader>
+                    <CardTitle>Solution</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ol className="list-decimal pl-6 space-y-1">
+                      {s.points.map((p, i) => (
+                        <li key={i}>{p}</li>
+                      ))}
+                    </ol>
+                  </CardContent>
+                </Card>
+              )
+            default:
+              return null
           }
-          if (s.type === "problem") {
-            return (
-              <Card key={idx}>
-                <CardHeader>
-                  <CardTitle>Problem</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-disc pl-6 space-y-1">
-                    {s.bullets.map((b, i) => (
-                      <li key={i}>{b}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            )
-          }
-          if (s.type === "solution") {
-            return (
-              <Card key={idx}>
-                <CardHeader>
-                  <CardTitle>Solution</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ol className="list-decimal pl-6 space-y-1">
-                    {s.points.map((p, i) => (
-                      <li key={i}>{p}</li>
-                    ))}
-                  </ol>
-                </CardContent>
-              </Card>
-            )
-          }
-          return null
         })}
       </div>
     </main>
