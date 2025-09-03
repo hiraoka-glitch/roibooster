@@ -1,78 +1,56 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import spec from "./lp.spec.json"
-import { LPSpecSchema, type Section } from "@/lib/schemas"
-
-// Validate the spec at build time
-const validatedSpec = LPSpecSchema.parse(spec)
+import Hero from "@/components/Hero"
+import Pillars from "@/components/Pillars"
+import PricingNote from "@/components/PricingNote"
+import BottomCta from "@/components/BottomCta"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import Section from "@/components/Section"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-8">
-      <div className="max-w-3xl w-full space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>{validatedSpec.title}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">このLPは JSON スペックのみをソースとして描画されています。</p>
-            <div className="mt-4 flex gap-2 flex-wrap">
-              <Badge variant="secondary">App Router</Badge>
-              <Badge variant="secondary">TypeScript</Badge>
-              <Badge variant="secondary">Tailwind</Badge>
-              <Badge variant="secondary">shadcn/ui</Badge>
-            </div>
-          </CardContent>
-        </Card>
+    <main>
+      {/* Hero Section */}
+      <Hero />
 
-        {validatedSpec.sections.map((s: Section, idx: number) => {
-          switch (s.type) {
-            case "attention":
-              return (
-                <Card key={idx}>
-                  <CardHeader>
-                    <CardTitle>{s.heading}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {s.sub && <p className="text-muted-foreground">{s.sub}</p>}
-                  </CardContent>
-                </Card>
-              )
-            case "problem":
-              return (
-                <Card key={idx}>
-                  <CardHeader>
-                    <CardTitle>Problem</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="list-disc pl-6 space-y-1">
-                      {s.bullets.map((b, i) => (
-                        <li key={i}>{b}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              )
-            case "solution":
-              return (
-                <Card key={idx}>
-                  <CardHeader>
-                    <CardTitle>Solution</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ol className="list-decimal pl-6 space-y-1">
-                      {s.points.map((p, i) => (
-                        <li key={i}>{p}</li>
-                      ))}
-                    </ol>
-                  </CardContent>
-                </Card>
-              )
-            default:
-              return null
-          }
-        })}
-      </div>
+      {/* Pillars Section */}
+      <Pillars />
+
+      {/* Pricing Note */}
+      <PricingNote />
+
+      {/* FAQ Section */}
+      <Section>
+        <h2 className="mb-8">よくある質問</h2>
+        <Accordion type="single" collapsible className="max-w-3xl mx-auto">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>どのくらいの期間で効果が出ますか？</AccordionTrigger>
+            <AccordionContent>
+              最短1週間で改善提案を実施し、1ヶ月以内にROI向上の効果を実感いただけます。
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger>初期費用はかかりますか？</AccordionTrigger>
+            <AccordionContent>
+              初期費用は0円です。月額10万円〜の料金体系で、成果報酬型プランもご用意しています。
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger>どのような業界に対応していますか？</AccordionTrigger>
+            <AccordionContent>
+              EC、SaaS、教育、金融など幅広い業界で実績があります。業界特化のノウハウも豊富です。
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </Section>
+
+      {/* Bottom CTA */}
+      <BottomCta />
+
+      {/* Footer */}
+      <footer className="bg-slate-50 py-8">
+        <div className="container-1080 text-center text-slate-600">
+          <p>&copy; 2024 ROIブースター. All rights reserved.</p>
+        </div>
+      </footer>
     </main>
   )
 }

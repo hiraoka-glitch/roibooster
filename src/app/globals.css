@@ -24,6 +24,7 @@
     --destructive-foreground: 210 40% 98%;
     --ring: 215 20.2% 65.1%;
     --radius: 0.5rem;
+    color-scheme: light;
   }
   .dark {
     --background: 222.2 84% 4.9%;
@@ -54,6 +55,33 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1 { @apply text-3xl md:text-5xl font-extrabold tracking-tight; }
+  h2 { @apply text-2xl md:text-3xl font-bold; }
+  p  { @apply leading-7; }
+  a  { @apply underline underline-offset-4 decoration-slate-300 hover:decoration-brand-400; }
+  .section { @apply py-10 md:py-16; }
+  .container-1080 { @apply container max-w-[1080px]; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold
+           bg-brand-500 text-white shadow-sm hover:bg-brand-600 active:translate-y-[1px]
+           transition;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold
+           border border-slate-300 text-slate-700 hover:bg-slate-50 transition;
+  }
+  .pill {
+    @apply rounded-full bg-brand-50 text-brand-700 px-3 py-1 text-sm font-medium;
+  }
+  .card {
+    @apply rounded-2xl bg-white shadow-card border border-slate-100;
+  }
+  .band {
+    @apply rounded-2xl bg-gradient-to-r from-brand-50 to-white border border-brand-100;
   }
 }
 

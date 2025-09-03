@@ -8,6 +8,10 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: { 
+      center: true, 
+      padding: "1rem" 
+    },
   	extend: {
   		colors: {
   			border: 'hsl(var(--border))',
@@ -42,12 +46,29 @@ const config: Config = {
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			brand: {
+  				50: '#eef6ff',
+  				100: '#d9ebff',
+  				200: '#b7d6ff',
+  				300: '#8dbbff',
+  				400: '#5d99ff',
+  				500: '#3379ff',   // 主アクセント
+  				600: '#1f63e6',
+  				700: '#184fc0',
+  				800: '#163f96',
+  				900: '#143676'
   			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			sm: 'calc(var(--radius) - 4px)',
+  			xl: '1rem',
+  			'2xl': '1.25rem'
+  		},
+  		boxShadow: {
+  			card: '0 6px 24px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04)'
   		},
   				keyframes: {
 			'accordion-down': {
