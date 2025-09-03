@@ -1,0 +1,9 @@
+{
+  "title": "ROIブースター",
+  "sections": [
+    { "type": "attention", "heading": "広告費のROI、伸び悩んでいませんか？", "sub": "無料診断でムダ配分を最短で特定" },
+    { "type": "problem", "bullets": ["代理店のKPIが自社とズレている", "計測/UTMが分断されている", "LPのCVRが低い"] },
+    { "type": "solution", "points": ["計測の正規化", "媒体別の最適配分", "LP/オファー改善"] }
+  ]
+}
+
