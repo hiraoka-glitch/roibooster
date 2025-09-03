@@ -4,12 +4,16 @@ import PricingNote from "@/components/PricingNote"
 import BottomCta from "@/components/BottomCta"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Section from "@/components/Section"
+import SectionDivider from "@/components/SectionDivider"
 
 export default function Home() {
   return (
     <main>
       {/* Hero Section */}
       <Hero />
+
+      {/* Divider */}
+      <SectionDivider />
 
       {/* Pillars Section */}
       <Pillars />
@@ -20,7 +24,7 @@ export default function Home() {
       {/* FAQ Section */}
       <Section>
         <h2 className="mb-8">よくある質問</h2>
-        <Accordion type="single" collapsible className="max-w-3xl mx-auto">
+        <Accordion type="single" collapsible className="max-w-[760px] mx-auto">
           <AccordionItem value="item-1">
             <AccordionTrigger>どのくらいの期間で効果が出ますか？</AccordionTrigger>
             <AccordionContent>
@@ -41,6 +45,9 @@ export default function Home() {
           </AccordionItem>
         </Accordion>
       </Section>
+
+      {/* Divider */}
+      <SectionDivider />
 
       {/* Bottom CTA */}
       <BottomCta />

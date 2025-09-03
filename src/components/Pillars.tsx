@@ -12,7 +12,7 @@ export default function Pillars() {
         {spec.pillars?.map((p: { title: string; desc: string }, i: number) => {
           const Icon = icons[i] ?? Rocket;
           return (
-            <div key={i} className="card p-6">
+            <div key={i} className="card p-6 md:p-7">
               <div className="flex items-center gap-3 mb-3">
                 <div className="h-9 w-9 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center">
                   <Icon className="h-5 w-5" />

@@ -26,7 +26,7 @@ export default function Hero() {
               {h.cta_primary}
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>
-            <a href={h.cta_secondary_href} className="btn-secondary">
+            <a href={h.cta_secondary_href} className="btn-outline">
               {h.cta_secondary}
             </a>
           </div>
